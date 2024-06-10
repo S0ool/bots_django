@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action='{% url "edit_category" category_id=category.id %}' method="post">
+    {% csrf_token %}
+    <input name="name" placeholder="name" type="text" value="{{ category.name }}"><br><br>
+    <button>Подтвердить редактирование</button><br><br><br><br>
+
+</form>
+<form action='{% url "delete_category" category_id=category.id %}' method="post">
+    {% csrf_token %}
+
+    <button>Удалить категорию</button>
+
+</form>
+
+
+</body>
+</html>

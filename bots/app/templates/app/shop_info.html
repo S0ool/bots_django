@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="{% url 'edit_shop' shop_id=shop.id %}" method="post">
+    {% csrf_token %}
+    <input name="name" placeholder="name" type="text" value="{{ shop.name }}"><br><br>
+    <select name="robots" multiple>
+        {% for robot in all_robots %}
+        <option value="{{ robot.id }}"
+        {% for shop_robot in robots %}
+
+            {% if robot.id == shop_robot.id %}
+                    selected
+            {% endif %}
+    {% endfor %}
+
+        >{{ robot.name }}</option>
+{% endfor %}
+
+    </select><br><br>
+
+    <button>Подтвердить редактирование</button><br><br>
+</form>
+<form action='{% url "delete_shop" shop_id=shop.id %}' method="post">
+    {% csrf_token %}
+
+    <button>Удалить магазин</button>
+
+</form>
+
+
+</body>
+</html>
