@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<form action="/add_robot" method="post">
+    {% csrf_token %}
+    <input name="name" placeholder="name" type="text"><br><br>
+    <input name="description" placeholder="description" type="text"><br><br>
+    <button>Создать</button><br><br>
+</form>
+{% for robot in robots %}
+    <a href="{% url 'robot_info' robot_id=robot.id %}">{{ robot.id }}. {{ robot.name }}</a>
+
+
+{% endfor %}
+
+</body>
+</html>
